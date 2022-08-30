@@ -8,8 +8,12 @@
     <Version>3.0.0</Version>
     <Authors>Alexandr Dobrin</Authors>
     <Company>DevastedSystematics</Company>
-    <Description>Fast and formalized console applications developement toolkit</Description>
+    <Description>Toolkit for formalized interaction model with users and simplified i/o operations.</Description>
     <PackageTags>console,in,out,menu,reader</PackageTags>
+    <Title>Console library.</Title>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/adobrin7/ConsoleLib</RepositoryUrl>
+    <PackageIcon>icon.jpg</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,6 +21,17 @@
 	<Using Remove="System.Threading" />
 	<Using Remove="System.Threading.Tasks" />
 	<Using Remove="System.Net.Http" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="bin\Release\icon.jpg">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 	
 </Project>
