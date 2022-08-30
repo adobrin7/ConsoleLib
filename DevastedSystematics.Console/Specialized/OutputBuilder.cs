@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace DevastedSystematics.Console.InOut.Specialized;
+namespace DevastedSystematics.Console.Specialized;
 
 public class OutputBuilder : IFormattable
 {

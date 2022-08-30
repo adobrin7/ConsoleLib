@@ -1,4 +1,4 @@
-﻿namespace DevastedSystematics.Console.InOut.Specialized;
+﻿namespace DevastedSystematics.Console;
 
 public static class CursorPosition
 {

@@ -1,4 +1,4 @@
-﻿using DevastedSystematics.Console.InOut.Specialized;
+﻿using DevastedSystematics.Console;
 
 namespace DevastedSystematics.Console;
 
