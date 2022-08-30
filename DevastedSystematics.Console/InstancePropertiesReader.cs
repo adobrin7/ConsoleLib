@@ -25,6 +25,7 @@ public sealed class InstancePropertiesReader
 
     private readonly IEnumerable<DialogProperty> propertiesToRead;
     private readonly string nameSeparator;
+
     public bool IsDialogCanceled { get; private set; } = false;
 
     public bool CheckPropertyType { get; set; } = false;

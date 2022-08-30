@@ -1,6 +1,4 @@
-﻿using DevastedSystematics.Console;
-
-namespace DevastedSystematics.Console;
+﻿namespace DevastedSystematics.Console;
 
 public static class Output
 {
