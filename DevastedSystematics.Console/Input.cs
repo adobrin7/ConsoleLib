@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace DevastedSystematics.Console;
+namespace DevastedSystematics.ConsoleLib;
 
 /// <summary>
 /// Provides static methods getting valid console input.

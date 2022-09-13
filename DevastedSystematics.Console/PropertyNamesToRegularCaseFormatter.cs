@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace DevastedSystematics.Console;
+namespace DevastedSystematics.ConsoleLib;
 
 public class PropertyNamesToRegularCaseFormatter : IPropertyNameFormatter
 {

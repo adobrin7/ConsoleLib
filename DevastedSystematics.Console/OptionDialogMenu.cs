@@ -1,4 +1,4 @@
-﻿namespace DevastedSystematics.Console;
+﻿namespace DevastedSystematics.ConsoleLib;
 
 /// <summary>
 /// Base class implementing dialog based on console menu, where every input is considered to be option. Valid option, by convension, is sequence number corresponding to the message sequence number.

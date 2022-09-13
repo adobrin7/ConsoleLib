@@ -1,4 +1,4 @@
-﻿namespace DevastedSystematics.Console;
+﻿namespace DevastedSystematics.ConsoleLib;
 
 public static class InputPatterns
 {

@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace DevastedSystematics.Console;
+namespace DevastedSystematics.ConsoleLib;
 
 public class DialogProperty
 {

@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace DevastedSystematics.Console.Specialized;
+namespace DevastedSystematics.ConsoleLib.Specialized;
 
 public static class Dialog
 {

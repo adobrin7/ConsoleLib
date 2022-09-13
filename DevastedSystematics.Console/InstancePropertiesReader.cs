@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using System.Text.RegularExpressions;
 
-namespace DevastedSystematics.Console;
+namespace DevastedSystematics.ConsoleLib;
 
 public sealed class InstancePropertiesReader
 {

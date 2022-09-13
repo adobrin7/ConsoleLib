@@ -1,4 +1,4 @@
-﻿namespace DevastedSystematics.Console.Specialized;
+﻿namespace DevastedSystematics.ConsoleLib.Specialized;
 
 public sealed class ReadableValue
 {
