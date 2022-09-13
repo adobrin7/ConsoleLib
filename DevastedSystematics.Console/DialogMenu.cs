@@ -2,8 +2,8 @@
 
 public abstract class DialogMenu
 {
-    public IEnumerable<Message> QuestionMessages { private protected get; init; } =
-        Enumerable.Empty<Message>();
+    public List<Message> QuestionMessages { private protected get; init; } =
+        new List<Message>(capacity: 0);
 
     public Message SeparatingMessage { private get; init; } = Message.Empty;
 
@@ -20,10 +20,13 @@ public abstract class DialogMenu
 
     private void Show()
     {
+        int count = 0;
         foreach (var message in QuestionMessages)
         {
             message.Show();
-            SeparatingMessage.Show();
+            if (count < QuestionMessages.Count - 1)
+                SeparatingMessage.Show();
+            count++;
         }
     }
 
