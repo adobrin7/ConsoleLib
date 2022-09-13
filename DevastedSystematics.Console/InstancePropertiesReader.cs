@@ -21,14 +21,17 @@ public sealed class InstancePropertiesReader
                     nameFormatter)))
             .Where(property => property.Context.CanRead);
         this.nameSeparator = nameSeparator;
+        this.nameFormatter = nameFormatter;
     }
 
     private readonly IEnumerable<DialogProperty> propertiesToRead;
     private readonly string nameSeparator;
+    private readonly IPropertyNameFormatter? nameFormatter;
 
     public bool IsDialogCanceled { get; private set; } = false;
 
     public bool CheckPropertyType { get; set; } = false;
+    public bool IsRecursive { get; set; } = false;
     public string? DialogCancelationToken { get; set; }
     public string? PropertySkipToken { get; set; }
 
@@ -45,7 +48,19 @@ public sealed class InstancePropertiesReader
                 OnCanceled?.Invoke();
                 return;
             }
+            if (IsRecursive)
+                ReadNestedInstance(property);
             IsDialogCanceled = StartDialogForProperty(property);
+        }
+    }
+
+    private void ReadNestedInstance(DialogProperty property)
+    {
+        if (property.GetType().IsClass)
+        {
+            var reader = new InstancePropertiesReader(property, nameSeparator, nameFormatter);
+            reader.ReadInDialog();
+            IsDialogCanceled = reader.IsDialogCanceled;
         }
     }
 
