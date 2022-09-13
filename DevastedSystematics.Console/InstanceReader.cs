@@ -6,7 +6,9 @@ public static class InstanceReader
     {
         ArgumentNullException.ThrowIfNull(instance, nameof(instance));
         new InstancePropertiesReader(instance, ": ", new PropertyNamesToRegularCaseFormatter())
-            .ReadInDialog();
+        {
+            IsRecursive = true,
+        }.ReadInDialog();
     }
 
     public static bool StartCreatingDialog<T>(T instance, string cancelationToken = "c") 

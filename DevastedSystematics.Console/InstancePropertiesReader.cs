@@ -48,20 +48,26 @@ public sealed class InstancePropertiesReader
                 OnCanceled?.Invoke();
                 return;
             }
-            if (IsRecursive)
+            if (CanReadNestedInstance(property))
+            {
                 ReadNestedInstance(property);
+                continue;
+            }
             IsDialogCanceled = StartDialogForProperty(property);
         }
     }
 
+    private bool CanReadNestedInstance(DialogProperty property) =>
+        IsRecursive &&
+        property.Value is not null &&
+        property.Value.GetType().IsClass;
+
     private void ReadNestedInstance(DialogProperty property)
     {
-        if (property.GetType().IsClass)
-        {
-            var reader = new InstancePropertiesReader(property, nameSeparator, nameFormatter);
-            reader.ReadInDialog();
-            IsDialogCanceled = reader.IsDialogCanceled;
-        }
+        ArgumentNullException.ThrowIfNull(property.Value, nameof(property.Value));
+        var reader = new InstancePropertiesReader(property.Value, nameSeparator, nameFormatter);
+        reader.ReadInDialog();
+        IsDialogCanceled = reader.IsDialogCanceled;
     }
 
     private bool StartDialogForProperty(DialogProperty property)

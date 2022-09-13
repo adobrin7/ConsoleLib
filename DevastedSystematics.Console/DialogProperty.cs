@@ -9,12 +9,15 @@ public class DialogProperty
         this.containingInstance = containingInstance;
         this.info = info;
         Context = context;
+        Value = info.GetValue(containingInstance);
     }
 
     private readonly object containingInstance;
     private readonly PropertyInfo info;
 
     public DialogPropertyContext Context { get; }
+
+    internal object? Value { get; }
 
     public void SetTypedValue(object value)
     {
