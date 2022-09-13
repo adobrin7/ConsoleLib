@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevastedSystematics.Console", "DevastedSystematics.Console\DevastedSystematics.Console.csproj", "{A1F0A93D-B5DC-4274-A32C-EB52A1AD3B3E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevastedSystematics.ConsoleLib", "DevastedSystematics.Console\DevastedSystematics.ConsoleLib.csproj", "{A1F0A93D-B5DC-4274-A32C-EB52A1AD3B3E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

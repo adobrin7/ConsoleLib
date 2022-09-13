@@ -9,7 +9,7 @@ public abstract class OptionDialogMenu<TOption> : DialogMenu
 {
     public OptionDialogMenu()
     {
-        MessagesSeparator = "\n";
+        SeparatingMessage = new Message("\n");
         NoneOptionByConvention = SupportedOptions[0];
         StopOptionByConvention = SupportedOptions[SupportedOptions.Length - 1];
     }

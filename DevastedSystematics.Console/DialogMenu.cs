@@ -4,7 +4,8 @@ public abstract class DialogMenu
 {
     public IEnumerable<Message> QuestionMessages { private protected get; init; } =
         Enumerable.Empty<Message>();
-    public string MessagesSeparator { private get; init; } = string.Empty;
+
+    public Message SeparatingMessage { private get; init; } = Message.Empty;
 
     private Consequence AnswerEffect { get; set; } = Consequence.Continue;
 
@@ -22,7 +23,7 @@ public abstract class DialogMenu
         foreach (var message in QuestionMessages)
         {
             message.Show();
-            Write(MessagesSeparator);
+            SeparatingMessage.Show();
         }
     }
 
