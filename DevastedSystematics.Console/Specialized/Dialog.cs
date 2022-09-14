@@ -36,7 +36,10 @@ public static class Dialog
     public static bool Edit(ReadableValue[] values, string cancelOn = "c", string skipOn = "") =>
         Edit(values.AsSpan(), cancelOn, skipOn);
 
-    public static bool Edit(ReadOnlySpan<ReadableValue> values, string cancelOn = "c", string skipOn = "")
+    public static bool Edit(
+        ReadOnlySpan<ReadableValue> values, 
+        string cancelOn = "c", 
+        string skipOn = "")
     {
         foreach (var value in values)
         {

@@ -13,8 +13,11 @@ public abstract class CrudOptionDialogMenu : OptionDialogMenu<CrudOptionDialogMe
     };
 
     protected abstract void CreateOptionHandler();
+
     protected abstract void ReadOptionHandler();
+
     protected abstract void UpdateOptionHandler();
+
     protected abstract void DeleteOptionHandler();
 
     public virtual event Action? OnStop;

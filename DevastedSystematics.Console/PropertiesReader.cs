@@ -20,12 +20,15 @@ public sealed class PropertiesReader
     }
 
     private readonly IEnumerable<ReadableProperty> propertiesToRead;
+
     private readonly IPropertyNameFormatter? nameFormatter;
+
     private readonly bool checkTypes;
 
     internal bool IsDialogCanceled { get; private set; } = false;
 
-    public static bool StartReadingFor(object instance, 
+    public static bool StartReadingFor(
+        object instance, 
         IPropertyNameFormatter? nameFormatter = null)
     {
         PropertiesReader reader = new PropertiesReader(instance, nameFormatter);
@@ -33,7 +36,8 @@ public sealed class PropertiesReader
         return reader.IsDialogCanceled;
     }
 
-    public static bool StartUncheckedReadingFor(object instance, 
+    public static bool StartUncheckedReadingFor(
+        object instance, 
         IPropertyNameFormatter? nameFormatter = null)
     {
         PropertiesReader reader = new PropertiesReader(instance, nameFormatter, false);
@@ -63,7 +67,7 @@ public sealed class PropertiesReader
     private void ReadNestedInstance(ReadableProperty property)
     {
         ArgumentNullException.ThrowIfNull(property.Value, nameof(property.Value));
-        var reader = new PropertiesReader(property.Value);
+        PropertiesReader reader = new PropertiesReader(property.Value);
         reader.Read();
         IsDialogCanceled = reader.IsDialogCanceled;
     }

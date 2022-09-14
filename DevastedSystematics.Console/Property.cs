@@ -4,11 +4,8 @@ namespace DevastedSystematics.ConsoleLib;
 
 public sealed class Property
 {
-    internal Property(object containingInstance, PropertyInfo info)
-    {
-        this.containingInstance = containingInstance;
-        this.info = info;
-    }
+    internal Property(object containingInstance, PropertyInfo info) =>
+        (this.containingInstance, this.info) = (containingInstance, info);
 
     private readonly object containingInstance;
 

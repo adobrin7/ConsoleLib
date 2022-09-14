@@ -14,14 +14,17 @@ public abstract class OptionDialogMenu<TOption> : DialogMenu
         StopOptionByConvention = SupportedOptions[SupportedOptions.Length - 1];
     }
 
-    public Message BeforeInputMessage { private get; init; } = Message.Empty;
-    public Message InvalidOptionMessage { private get; init; } = Message.Empty;
-
     private TOption[] SupportedOptions => Enum.GetValues<TOption>();
+
     private readonly TOption NoneOptionByConvention;
+
     private readonly TOption StopOptionByConvention;
 
-    sealed protected override Consequence Answer()
+    public Message BeforeInputMessage { private get; init; } = Message.Empty;
+
+    public Message InvalidOptionMessage { private get; init; } = Message.Empty;
+
+    protected sealed override Consequence Answer()
     {
         string input = GetInput();
         TOption selectedOption = Enum.Parse<TOption>(input, ignoreCase: true);
@@ -57,7 +60,9 @@ public abstract class OptionDialogMenu<TOption> : DialogMenu
     private Consequence Invoke(Action? handler)
     {
         if (handler is null)
-            throw new ArgumentOutOfRangeException(nameof(handler), $"Selected option is out of {nameof(TOption)} range or missing handler. Check that the {nameof(TOption)} enum follows the convention and messages count is not greater then provided options count in {nameof(TOption)} enum. Or, check if null is returned instead of handler.");
+            throw new ArgumentOutOfRangeException(
+                nameof(handler), 
+                $"Selected option is out of {nameof(TOption)} range or missing handler. Check that the {nameof(TOption)} enum follows the convention and messages count is not greater then provided options count in {nameof(TOption)} enum. Or, check if null is returned instead of handler.");
         handler();
         return Consequence.Continue;
     }

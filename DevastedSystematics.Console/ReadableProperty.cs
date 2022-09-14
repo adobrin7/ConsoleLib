@@ -7,7 +7,8 @@ internal sealed class ReadableProperty
 {
     public ReadableProperty(object containingInstance, PropertyInfo info)
     {
-        instanceLevelAttribute = containingInstance.GetType().GetCustomAttribute<InterruptableReadingAttribute>();
+        instanceLevelAttribute = containingInstance.GetType()
+            .GetCustomAttribute<InterruptableReadingAttribute>();
         property = new Property(containingInstance, info);
         readableAttribute = info.GetCustomAttribute<ReadableAttribute>();
         validAttribute = info.GetCustomAttribute<ValidatedOnReadingAttribute>();
@@ -68,12 +69,18 @@ internal sealed class ReadableProperty
 
     private bool IsReadingCanceled(string? input) =>
         instanceLevelAttribute?.CancelToken is not null &&
-        string.Equals(input, instanceLevelAttribute.CancelToken, StringComparison.OrdinalIgnoreCase);
+        string.Equals(
+            input, 
+            instanceLevelAttribute.CancelToken, 
+            StringComparison.OrdinalIgnoreCase);
 
     private bool IsReadingSkipped(string? input) =>
         instanceLevelAttribute is not null &&
         !isRequired &&
-        string.Equals(input, instanceLevelAttribute.SkipToken, StringComparison.OrdinalIgnoreCase);
+        string.Equals(
+            input, 
+            instanceLevelAttribute.SkipToken, 
+            StringComparison.OrdinalIgnoreCase);
 
     private bool IsValidInput(string? input) =>
         input is not null && 
