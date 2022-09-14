@@ -16,7 +16,7 @@ public sealed class Property
 
     public object? Value
     {
-        get => info.GetValue(containingInstance); // todo remove?
+        get => info.GetValue(containingInstance);
         set => info.SetValue(
             containingInstance,
             Convert.ChangeType(value, info.PropertyType));
