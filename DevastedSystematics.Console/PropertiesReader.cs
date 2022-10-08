@@ -36,6 +36,16 @@ public sealed class PropertiesReader
         return reader.IsDialogCanceled;
     }
 
+    public static bool StartReadingFor<TInstance>(
+        out TInstance instance,
+        IPropertyNameFormatter? nameFormatter = null)
+    {
+        instance = (TInstance)Activator.CreateInstance(typeof(TInstance))!;
+        PropertiesReader reader = new PropertiesReader(instance, nameFormatter);
+        reader.Read();
+        return reader.IsDialogCanceled;
+    }
+
     public static bool StartUncheckedReadingFor(
         object instance, 
         IPropertyNameFormatter? nameFormatter = null)
