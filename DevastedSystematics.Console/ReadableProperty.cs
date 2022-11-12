@@ -38,7 +38,7 @@ internal sealed class ReadableProperty
 
     public object? Value => property.Value;
 
-    public bool StartReading(IPropertyNameFormatter? nameFormatter = null)
+    public bool StartReading(IPropertyNameFormatter? nameFormatter = null, bool isForced = false)
     {
         string nameToShow = GetFormattedName(nameFormatter);
         Write(nameToShow);
@@ -47,7 +47,7 @@ internal sealed class ReadableProperty
         
         if (IsReadingCanceled(input))
             return true;
-        if(IsReadingSkipped(input))
+        if (IsReadingSkipped(input) && !isForced)
             return false;
 
         if (!IsValidInput(input))

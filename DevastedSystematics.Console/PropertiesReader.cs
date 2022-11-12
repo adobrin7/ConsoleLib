@@ -2,6 +2,7 @@
 
 namespace DevastedSystematics.ConsoleLib;
 
+// TODO rename to InputMapper
 public sealed class PropertiesReader
 {
     internal PropertiesReader(object instance, IPropertyNameFormatter? nameFormatter = null, 
@@ -27,11 +28,26 @@ public sealed class PropertiesReader
 
     internal bool IsDialogCanceled { get; private set; } = false;
 
+    internal bool IsForcedReading { private get; init; } = false;
+
     public static bool StartReadingFor(
         object instance, 
         IPropertyNameFormatter? nameFormatter = null)
     {
         PropertiesReader reader = new PropertiesReader(instance, nameFormatter);
+        reader.Read();
+        return reader.IsDialogCanceled;
+    }
+
+    public static bool StartRequieredReadingFor<TInstance>(
+        out TInstance instance, 
+        IPropertyNameFormatter? nameFormatter = null)
+    {
+        instance = (TInstance)Activator.CreateInstance(typeof(TInstance))!;
+        PropertiesReader reader = new PropertiesReader(instance, nameFormatter, false)
+        {
+            IsForcedReading = true
+        };
         reader.Read();
         return reader.IsDialogCanceled;
     }
@@ -86,7 +102,7 @@ public sealed class PropertiesReader
     {
         try
         {
-            return property.StartReading(nameFormatter);
+            return property.StartReading(nameFormatter, IsForcedReading);
         }
         catch (FormatException) when (checkTypes)
         {
